@@ -1,0 +1,9 @@
+namespace StaticLibrary1
+{
+    [default_interface]
+    unsealed runtimeclass Class
+    {
+        Class();
+        Int32 MyProperty;
+    }
+}
