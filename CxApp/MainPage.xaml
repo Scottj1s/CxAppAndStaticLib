@@ -14,7 +14,4 @@
 
     <sc:BlankUserControl />
 
-    <!--<Grid>
-        <local:BlankUserControl />
-    </Grid>-->
 </Page>

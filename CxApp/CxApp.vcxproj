@@ -220,6 +220,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RuntimeComponent1\RuntimeComponent1.vcxproj">
+      <Project>{235eb6e1-dacc-4994-a5ac-dab342f6550f}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\StaticLibrary1\StaticLibrary1.vcxproj">
       <Project>{61b62016-e4c2-4f00-b145-755bf7610fcf}</Project>
     </ProjectReference>
