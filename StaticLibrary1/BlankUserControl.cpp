@@ -30,7 +30,7 @@ namespace winrt::StaticLibrary1::implementation
     }
 }
 
-winrt::Windows::Foundation::IInspectable make_BlankUserControl()
+void* make_StaticLibrary1_BlankUserControl()
 {
-    return winrt::make<winrt::StaticLibrary1::implementation::BlankUserControl>();
+    return winrt::detach_abi(winrt::make<winrt::StaticLibrary1::implementation::BlankUserControl>());
 }

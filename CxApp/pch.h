@@ -10,14 +10,15 @@
 
 #include <winrt/Windows.Foundation.h>
 
-winrt::Windows::Foundation::IInspectable make_BlankUserControl();
 
 template<typename T>
 ::Platform::Object^ ActivateType();
 
+// Specialize ActivateType<> for XamlTypeInfo.g.cpp
+void* make_StaticLibrary1_BlankUserControl();
 template<>
 inline
 ::Platform::Object^ ActivateType<::StaticLibrary1::BlankUserControl>()
 {
-    return reinterpret_cast<Platform::Object^>(winrt::detach_abi(make_BlankUserControl()));
+    return reinterpret_cast<Platform::Object^>(make_StaticLibrary1_BlankUserControl());
 }

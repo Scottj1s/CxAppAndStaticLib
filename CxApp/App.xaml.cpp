@@ -25,51 +25,12 @@ using namespace Windows::UI::Xaml::Interop;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
-//using namespace winrt;
-
-//winrt::hresult STDAPICALLTYPE GetFactory(winrt::hstring, winrt::Windows::Foundation::IActivationFactory** factory)
-//{
-//    struct Factory : winrt::implements<Factory, winrt::Windows::Foundation::IActivationFactory>
-//    {
-//        winrt::Windows::Foundation::IInspectable ActivateInstance()
-//        {
-//            winrt::StaticLibrary1::BlankUserControl control;
-//            return control;
-//        }
-//
-//        winrt::hstring GetRuntimeClassName()
-//        {
-//            return L"StaticLibrary1.BlankUserControl";
-//        }
-//
-//        winrt::Windows::Foundation::TrustLevel GetTrustLevel()
-//        {
-//            return winrt::Windows::Foundation::TrustLevel::PartialTrust;
-//        }
-//    };
-//
-//    *factory = (winrt::Windows::Foundation::IActivationFactory*)winrt::detach_abi(winrt::make<Factory>());
-//    return 0;
-//}
-
 /// <summary>
 /// Initializes the singleton application object.  This is the first line of authored code
 /// executed, and as such is the logical equivalent of main() or WinMain().
 /// </summary>
 App::App()
 {
-    //RO_REGISTRATION_COOKIE cookie;
-    //winrt::hstring classId{ L"StaticLibrary1.BlankUserControl" };
-    //HSTRING hstr = (HSTRING)winrt::get_abi(classId);
-    //auto callback{ (PFNGETACTIVATIONFACTORY)&GetFactory };
-    //auto hr = RoRegisterActivationFactories(
-    //    &hstr,
-    //    &callback,
-    //    1,
-    //    &cookie
-    //);
-    //winrt::check_hresult(hr);
-
     InitializeComponent();
     Suspending += ref new SuspendingEventHandler(this, &App::OnSuspending);
 }
