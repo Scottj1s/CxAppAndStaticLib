@@ -25,9 +25,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="BlankUserControl.xaml" />
   </ItemGroup>
 </Project>
