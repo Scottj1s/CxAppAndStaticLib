@@ -6,8 +6,10 @@
 
 #include <winrt/Windows.Foundation.h>
 
-// The Xaml Compiler generates code in XamlTypeInfo.g.cpp that binds to components
-// in the module using the template function ActivateType.
+// The Xaml Compiler generates code in XamlTypeInfo.g.cpp that binds to classes
+// in the module using the template function ActivateType. When it is using
+// the C++ CX code generation mode, <CppWinRTProjectLanguage>C++/CX</CppWinRTProjectLanguage>
+// a specialization needs to be manually provided for classes implemented using C++ WinRt.
 //
 // This declaration must be provided.
 template<typename T> ::Platform::Object^ ActivateType();
