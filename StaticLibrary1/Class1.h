@@ -1,12 +1,12 @@
 ﻿#pragma once
 
-#include "Class.g.h"
+#include "Class1.g.h"
 
 namespace winrt::StaticLibrary1::implementation
 {
-    struct Class : ClassT<Class>
+    struct Class1 : Class1T<Class1>
     {
-        Class() = default;
+        Class1() = default;
 
         int32_t MyProperty();
         void MyProperty(int32_t value);
@@ -15,16 +15,16 @@ namespace winrt::StaticLibrary1::implementation
 
 namespace winrt::StaticLibrary1::factory_implementation
 {
-    struct Class : ClassT<Class, implementation::Class>
+    struct Class1 : Class1T<Class1, implementation::Class1>
     {
         auto CreateInstance(Windows::Foundation::IInspectable const& baseInterface, Windows::Foundation::IInspectable& innerInterface)
         {
-            return impl::composable_factory<implementation::Class>::template CreateInstance<StaticLibrary1::Class>(baseInterface, innerInterface);
+            return impl::composable_factory<implementation::Class1>::template CreateInstance<StaticLibrary1::Class1>(baseInterface, innerInterface);
         }
 
         Windows::Foundation::IInspectable ActivateInstance() const
         {
-            return make<implementation::Class>();
+            return make<implementation::Class1>();
         }
 
     };

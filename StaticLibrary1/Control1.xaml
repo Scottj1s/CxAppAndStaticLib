@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="StaticLibrary1.BlankUserControl"
+    x:Class="StaticLibrary1.Control1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:StaticLibrary1"
@@ -8,6 +8,7 @@
     mc:Ignorable="d">
 
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="Button" Click="ClickHandler">Click Me</Button>
+        <Button x:Name="Button" Click="ClickHandler">Control1</Button>
     </StackPanel>
+    
 </UserControl>

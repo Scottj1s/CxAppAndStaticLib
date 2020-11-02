@@ -213,6 +213,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CxComponent\CxComponent.vcxproj">
+      <Project>{1a20b1f5-562c-45e1-887d-2b98216d234d}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\RuntimeComponent1\RuntimeComponent1.vcxproj">
       <Project>{235eb6e1-dacc-4994-a5ac-dab342f6550f}</Project>
     </ProjectReference>

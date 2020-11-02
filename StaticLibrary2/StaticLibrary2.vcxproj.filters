@@ -22,9 +22,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="Class1.idl" />
+    <Text Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Control1.xaml" />
+    <Midl Include="Class2.idl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Control2.xaml" />
   </ItemGroup>
 </Project>

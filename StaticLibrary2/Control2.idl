@@ -1,0 +1,9 @@
+namespace StaticLibrary2
+{
+    [default_interface]
+    runtimeclass Control2 : Windows.UI.Xaml.Controls.UserControl
+    {
+        Control2();
+        Int32 MyProperty;
+    }
+}
