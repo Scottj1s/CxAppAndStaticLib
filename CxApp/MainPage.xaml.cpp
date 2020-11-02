@@ -35,7 +35,9 @@ using namespace winrt;
 void* winrt_make_StaticLibrary1_Class1();
 
 
-// Replace CRT activation TU (is this documented?)
+// Replace CRT activation translation unit definitions.
+// See https://devblogs.microsoft.com/oldnewthing/20130109-00/?p=5613 for details on how this works.
+// This takes advantage of an implementation detail of C++ CX but that won't be changing so we can depend on it safely.
 HRESULT __stdcall GetActivationFactoryByPCWSTR(void* str, ::Platform::Guid& riid, void** ppActivationFactory);
 void __stdcall FlushFactoryCache();
 
