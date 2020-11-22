@@ -70,11 +70,21 @@ namespace Platform
 // ::StaticLibrary1::Class1 is implemented in C++ WinRT.
 // Support for its activation is provided in the code above.
 ref class Derived1 : public ::StaticLibrary1::Class1
-{};
+{
+public:
+    // Demonstrate overriding of an overridable method in an 
+    // unsealed runtimeclass defined in IDL.
+    void SetProperty(int value) override
+    {
+        MyProperty = value;
+    }
+};
 
 MainPage::MainPage()
 {
     InitializeComponent();
-    auto d = ref new Derived1();
-    auto p = d->MyProperty;
+    ::StaticLibrary1::Class1^ base_ref = ref new Derived1();
+    base_ref->SetProperty(42);
+    auto p = base_ref->MyProperty;
+    assert(p == 42);
 }

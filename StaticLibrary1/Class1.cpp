@@ -6,11 +6,17 @@ namespace winrt::StaticLibrary1::implementation
 {
     int32_t Class1::MyProperty()
     {
-        return 1;
+        return _property;
     }
 
-    void Class1::MyProperty(int32_t /* value */)
+    void Class1::MyProperty(int32_t value)
     {
+        _property = value;
+    }
+
+    void Class1::SetProperty(int32_t /* value */)
+    {
+        // implemented in derived class 
         throw hresult_not_implemented();
     }
 }

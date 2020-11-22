@@ -5,5 +5,6 @@ namespace StaticLibrary1
     {
         Class1();
         Int32 MyProperty;
+        overridable void SetProperty(Int32 value);
     }
 }

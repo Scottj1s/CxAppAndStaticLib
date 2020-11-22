@@ -8,8 +8,10 @@ namespace winrt::StaticLibrary1::implementation
     {
         Class1() = default;
 
+        int32_t _property{ 0 };
         int32_t MyProperty();
         void MyProperty(int32_t value);
+        void SetProperty(int32_t value);
     };
 }
 
