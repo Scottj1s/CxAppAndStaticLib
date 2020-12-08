@@ -6,6 +6,7 @@
 #include "pch.h"
 #include <string_view>
 #include "MainPage.xaml.h"
+#include <winrt/StaticLibrary1.h>
 
 using namespace CxApp;
 
@@ -83,8 +84,15 @@ public:
 MainPage::MainPage()
 {
     InitializeComponent();
+
+    // Exercise CX class derived from C++/WinRT static library class
     ::StaticLibrary1::Class1^ base_ref = ref new Derived1();
     base_ref->SetProperty(42);
-    auto p = base_ref->MyProperty;
-    assert(p == 42);
+    auto p1 = base_ref->MyProperty;
+    assert(p1 == 42);
+    
+    // Exercise static library class via C++/WinRT projection headers
+    winrt::StaticLibrary1::Class1 c;
+    auto p2 = c.MyProperty();
+    assert(p2 == 0);
 }

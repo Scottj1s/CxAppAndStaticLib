@@ -7,7 +7,6 @@
 #include "roapi.h"
 #include "MainPage.xaml.h"
 #include "winrt/Windows.Foundation.h"
-//#include <winrt/StaticLibrary1.h>
 
 using namespace CxApp;
 

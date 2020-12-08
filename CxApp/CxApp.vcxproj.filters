@@ -50,5 +50,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="..\README.md" />
+    <None Include="Directory.Build.targets" />
   </ItemGroup>
 </Project>
