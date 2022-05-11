@@ -14,7 +14,7 @@ CxControl1::CxControl1()
 
 int CxControl1::GetMyProperty()
 {
-	InitializeComponent();
+    InitializeComponent();
     auto d = ref new Derived2();
     auto p = d->MyProperty;
     return p;

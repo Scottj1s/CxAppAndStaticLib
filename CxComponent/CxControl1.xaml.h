@@ -9,16 +9,16 @@
 
 namespace CxComponent
 {
-	[Windows::Foundation::Metadata::WebHostHidden]
-	public ref class CxControl1 sealed
-	{
-	public:
-		CxControl1();
-		property int MyProperty
-		{
-			int get() { return GetMyProperty(); }
-		}
-	private:
-		int GetMyProperty();
-	};
+    [Windows::Foundation::Metadata::WebHostHidden]
+    public ref class CxControl1 sealed
+    {
+    public:
+        CxControl1();
+        property int MyProperty
+        {
+            int get() { return GetMyProperty(); }
+        }
+    private:
+        int GetMyProperty();
+    };
 }
