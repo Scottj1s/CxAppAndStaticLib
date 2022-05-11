@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- TODO: considering rolling this logic into Microsoft.Windows.MidlRT Nuget package for C++/CX support -->
+
+  <PropertyGroup>
+    <MidlRTVerbosity>high</MidlRTVerbosity>
+    <MidlRTMergeProjectWinMDInputsDependsOn>$(MidlRTMergeProjectWinMDInputsDependsOn);CxMdMerge</MidlRTMergeProjectWinMDInputsDependsOn>
+  </PropertyGroup>
+
+  <!-- The linker merges metadata into any existing winmd, causing MdMerge MDM2009 duplicate type errors
+    on incremental builds. So restore the original winmd prior to CreateWinMD. -->
+  <Target Name="BeforeCreateWinMD" BeforeTargets="CreateWinMD"
+    Condition="'@(Link)' != '' and '$(GenerateBuildCompilePassWinMD)' == 'true' and '$(OnlyCreateWinMD)' == 'true'">
+    <ItemGroup>
+      <CxWinMDMerged Include="@(WinMDFullPath->'%(FullPath).merged')" />
+      <CxWinMDUnmerged Include="@(WinMDFullPath->'%(FullPath).unmerged')" />
+    </ItemGroup>
+    <!-- Save current merged winmd -->
+    <Copy Condition="Exists('@(WinMDFullPath)')"
+        UseHardlinksIfPossible="false" 
+        SkipUnchangedFiles="true"
+        SourceFiles="@(WinMDFullPath)"
+        DestinationFiles="@(CxWinMDMerged)" />
+    <!-- Disable linker's metadata merging by deleting existing winmd -->
+    <Delete Condition="Exists('@(WinMDFullPath)')" Files="@(WinMDFullPath)" />
+  </Target>
+
+  <Target Name="AfterCreateWinMD" AfterTargets="CreateWinMD"
+    Condition="'@(Link)' != '' and '$(GenerateBuildCompilePassWinMD)' == 'true' and '$(OnlyCreateWinMD)' == 'true'">
+    <!-- Compare newly created winmd with unmerged, if any -->
+    <PropertyGroup>
+      <UnmergedCompare>true</UnmergedCompare>
+    </PropertyGroup>
+    <Exec Condition="Exists('@(CxWinMDUnmerged)')"
+      IgnoreExitCode="true"
+      Command="$(ComSpec) /c fc /b &quot;@(WinMDFullPath)&quot; &quot;@(CxWinMDUnmerged)&quot; &gt;nul 2&gt;&amp;1">
+      <Output TaskParameter="ExitCode" PropertyName="UnmergedCompare" />
+    </Exec>
+    <PropertyGroup>
+      <MergeRequired Condition="'$(UnmergedCompare)'!='0' or !Exists('@(CxWinMDMerged)')">true</MergeRequired>
+    </PropertyGroup>
+    <!-- If unmerged winmd has not changed, restore merged winmd -->
+    <Copy Condition="'$(MergeRequired)'!='true'"
+      UseHardlinksIfPossible="false"
+      SkipUnchangedFiles="true"
+      SourceFiles="@(CxWinMDMerged)"
+      DestinationFiles="@(WinMDFullPath)" />
+    <!-- If unmerged winmd has changed, or no merged winmd, update unmerged winmd
+      and rely on MdMerge dependencies to conditionally execute -->
+    <Copy Condition="'$(MergeRequired)'=='true'"
+      UseHardlinksIfPossible="false"
+      SkipUnchangedFiles="true"
+      SourceFiles="@(WinMDFullPath)"
+      DestinationFiles="@(CxWinMDUnmerged)" />
+  </Target>
+
+  <!-- Set up MidlRTMergeProjectWinMDInputs with C++/CX project support -->
+  <Target Name="BeforeGetMidlRTMdMergeInputs" BeforeTargets="GetMidlRTMdMergeInputs" DependsOnTargets="GetResolvedWinMD" >
+    <PropertyGroup>
+      <MidlRTProjectWinMD>@(WinMDFullPath->'%(FullPath)')</MidlRTProjectWinMD>
+      <MidlRTMergedDir>@(WinMDFullPath->'%(RootDir)%(Directory)')</MidlRTMergedDir>
+    </PropertyGroup>
+  </Target>
+  <Target Name="AfterGetMidlRTMdMergeInputs" AfterTargets="GetMidlRTMdMergeInputs" DependsOnTargets="GetResolvedWinMD" >
+    <ItemGroup>
+      <MidlRTMdMergeInputs Include="@(CxWinMDUnmerged)" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CxMdMerge" DependsOnTargets="GetMidlRTMdMergeInputs;CreateWinMD;ResolveAssemblyReferences;" /> 
+
+</Project>

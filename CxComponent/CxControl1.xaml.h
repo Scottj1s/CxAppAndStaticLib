@@ -14,5 +14,11 @@ namespace CxComponent
 	{
 	public:
 		CxControl1();
+		property int MyProperty
+		{
+			int get() { return GetMyProperty(); }
+		}
+	private:
+		int GetMyProperty();
 	};
 }

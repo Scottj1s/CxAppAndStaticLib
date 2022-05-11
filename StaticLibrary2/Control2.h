@@ -6,7 +6,7 @@
 #include "winrt/Windows.UI.Xaml.Controls.Primitives.h"
 #include "Control2.g.h"
 
-namespace winrt::StaticLibrary2::implementation
+namespace winrt::CxComponent::StaticLibrary2::implementation
 {
     struct Control2 : Control2T<Control2>
     {
@@ -19,7 +19,7 @@ namespace winrt::StaticLibrary2::implementation
     };
 }
 
-namespace winrt::StaticLibrary2::factory_implementation
+namespace winrt::CxComponent::StaticLibrary2::factory_implementation
 {
     struct Control2 : Control2T<Control2, implementation::Control2>
     {

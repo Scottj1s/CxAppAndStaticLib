@@ -7,3 +7,6 @@ using namespace Platform;
 CxClass1::CxClass1()
 {
 }
+
+
+

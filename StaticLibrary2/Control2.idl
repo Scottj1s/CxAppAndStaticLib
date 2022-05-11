@@ -1,4 +1,4 @@
-namespace StaticLibrary2
+namespace CxComponent.StaticLibrary2
 {
     [default_interface]
     runtimeclass Control2 : Windows.UI.Xaml.Controls.UserControl

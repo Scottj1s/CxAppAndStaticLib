@@ -9,6 +9,7 @@
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="CxClass1.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -16,5 +17,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="CxControl1.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Directory.Build.targets" />
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

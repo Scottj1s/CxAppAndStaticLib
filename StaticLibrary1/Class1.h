@@ -28,7 +28,6 @@ namespace winrt::StaticLibrary1::factory_implementation
         {
             return make<implementation::Class1>();
         }
-
     };
 }
 

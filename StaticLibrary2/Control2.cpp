@@ -7,7 +7,7 @@
 using namespace winrt;
 using namespace Windows::UI::Xaml;
 
-namespace winrt::StaticLibrary2::implementation
+namespace winrt::CxComponent::StaticLibrary2::implementation
 {
     Control2::Control2()
     {
@@ -30,7 +30,7 @@ namespace winrt::StaticLibrary2::implementation
     }
 }
 
-void* make_StaticLibrary2_Control2()
+void* make_CxComponent_StaticLibrary2_Control2()
 {
-    return winrt::detach_abi(winrt::make<winrt::StaticLibrary2::implementation::Control2>());
+    return winrt::detach_abi(winrt::make<winrt::CxComponent::StaticLibrary2::implementation::Control2>());
 }

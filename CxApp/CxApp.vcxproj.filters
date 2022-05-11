@@ -48,8 +48,7 @@
     <Page Include="MainPage.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="..\README.md" />
-    <None Include="Directory.Build.targets" />
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

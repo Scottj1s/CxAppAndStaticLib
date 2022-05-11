@@ -1,9 +1,10 @@
-namespace StaticLibrary2
+namespace CxComponent.StaticLibrary2
 {
     [default_interface]
     unsealed runtimeclass Class2
     {
         Class2();
         Int32 MyProperty;
+        overridable void SetProperty(Int32 value);
     }
 }
